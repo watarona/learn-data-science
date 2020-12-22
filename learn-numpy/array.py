@@ -40,3 +40,49 @@ print(np.random.random((3, 3)))
 # Create a 3x3  array of narmally distrubute random values
 # with mean 0 and standard deviation 1
 print(np.random.normal(0, 1, (3, 3)))
+
+# Create a 3x3 array of random integers in the interval [0, 10)
+print(np.random.randint(0, 10, (3, 3)))
+
+# Create a 3x3 identity matrix
+print(np.eye(3))
+
+# Create an uninitialized array of three integers
+# The values will be whatever happens to already ecist at that memory location
+print(np.empty(3))
+
+# seed for reproducibility
+# seed : By specifying a seed, it is possible to fix the random number to be generated in advance. 
+# This is used when reproducibility is required in analysis or processing that uses random numbers.
+np.random.seed(0)
+
+x1 = np.random.randint(10, size=6)            #One-dimensional array
+x2 = np.random.randint(10, size=(3, 4))       #Two-dimensional array
+x3 = np.random.randint(10 ,size=(3, 4, 5))    #Three-dimensioanl array
+
+# Each array has attributes ndim (the number of dimensions), shape (the size of each dimension), and size (the total size of the array)
+print("x3 ndim: ", x3.ndim)
+print("x3 shape: ", x3.shape)
+print("x3 size: ", x3.size)
+
+# Another useful attribute is the dtype, the data type of the array 
+print("dtype:", x3.dtype)
+
+# Other attributes include itemsize, which lists the size (in bytes) of each array element, and nbytes, which lists the total size (in bytes) of the array
+# In general, we expect that nbytes is equal to itemsize times size.
+print("itemsize:", x3.itemsize, "bytes")
+print("nbytes:", x3.nbytes, "bytes")
+
+# One important–and extremely useful–thing to know about array slices is that they return views rather than copies of the array data.
+# This is one area in which NumPy array slicing differs from Python list slicing　
+# in lists, slices will be copies.
+print(x2)
+# Let's extract a $2 \times 2$ subarray from this:
+x2_sub = x2[:2, :2]
+print(x2_sub)
+# Now if we modify this subarray, we'll see that the original array is changed!
+# This default behavior is actually quite useful: 
+# it means that when we work with large datasets, we can access and process pieces of these datasets without the need to copy the underlying data buffer.
+x2_sub[0, 0] = 99
+print(x2_sub)
+print(x2)
