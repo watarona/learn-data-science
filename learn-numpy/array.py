@@ -86,3 +86,11 @@ print(x2_sub)
 x2_sub[0, 0] = 99
 print(x2_sub)
 print(x2)
+
+# Another useful type of operation is reshapring of arrays.
+# The most flexible way of doing this is with the reshpe method.
+# Note that for this to work, the size of the initial array must match the size of the reshaped array. 
+#  Where possible, the reshape method will use a no-copy view of the initial array, but with non-contiguous memory buffers this is not always the case.
+grid = np.arange(1, 10).reshape((3,3))
+print(grid)
+
