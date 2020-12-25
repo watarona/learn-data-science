@@ -90,7 +90,19 @@ print(x2)
 # Another useful type of operation is reshapring of arrays.
 # The most flexible way of doing this is with the reshpe method.
 # Note that for this to work, the size of the initial array must match the size of the reshaped array. 
-#  Where possible, the reshape method will use a no-copy view of the initial array, but with non-contiguous memory buffers this is not always the case.
+# Where possible, the reshape method will use a no-copy view of the initial array, but with non-contiguous memory buffers this is not always the case.
 grid = np.arange(1, 10).reshape((3,3))
 print(grid)
+
+# Another common reshaping pattern is the conversion of a one-dimensional array into a two-dimensional row or column matrix. 
+# This can be done with the reshape method, or more easily done by making use of the newaxis keyword within a slice operation:
+x = np.array([1, 2, 3])
+# row vector via reshape
+print(x.reshape((1, 3)))
+# row vector via newaxis
+print(x[np.newaxis, :])
+# column vector via reshape
+print(x.reshape((3, 1)))
+# column vector via newaxis
+print(x[:, np.newaxis])  
 
